@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import PropTypes from 'prop-types'
 import night from '../../assets/night.png'
@@ -6,14 +6,19 @@ import night from '../../assets/night.png'
 import '../../styles/weather.css'
 
 function WeatherCard() {
+  const [loading, setLoading] = useState(true)
   const weatherData = useSelector((state) => state.weather.weather)
-  console.log(weatherData)
+  console.log(Object.entries(weatherData).length)
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch({ type: 'weather/getWeather' })
   }, [dispatch])
+
+  if (Object.entries(weatherData).length === 0) {
+    setLoading(true)
+  }
 
   const name = weatherData ? weatherData.name : ''
   const country = weatherData ? weatherData.sys.country : ''
@@ -26,11 +31,17 @@ function WeatherCard() {
         src={night}
         alt='night'
       />
-      <h2 className='text'>{Math.floor(temp)}C</h2>
-      <h3 className='text'>
-        {name}, {country}
-      </h3>
-      <h2 className='text'>{wea}</h2>
+      {loading ? (
+        <div>
+          <h2 className='text'>{Math.floor(temp)}C</h2>
+          <h3 className='text'>
+            {name}, {country}
+          </h3>
+          <h2 className='text'>{wea}</h2>
+        </div>
+      ) : (
+        <h2 className='text'>Loading...</h2>
+      )}
     </div>
   )
 }

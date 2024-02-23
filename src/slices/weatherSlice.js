@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getWeather } from '../services/getWeather'
 
 // const url =
-// 'https://api.openweathermap.org/data/2.5/weather?lat=-12.09645155&lon=-76.99568986771155&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
+//   'https://api.openweathermap.org/data/2.5/weather?lat=-12.09645155&lon=-76.99568986771155&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
 
 const wwww = {
   coord: {
@@ -14,7 +14,7 @@ const wwww = {
     {
       id: 802,
       main: 'Clouds',
-      description: 'scattered clouds',
+      description: 'scattered X clouds',
       icon: '03d',
     },
   ],
@@ -50,18 +50,20 @@ const wwww = {
 }
 
 const initialState = {
-  weather: {},
+  weather: wwww,
   loading: false,
   error: null,
 }
 
 export const fetchWeather = createAsyncThunk('weather/getWeather', async () => {
-  const response = await getWeather()
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => error)
-
-  return response ? response : wwww
+  try {
+    const resp = await getWeather().then((response) => response)
+    console.log('RESP', resp)
+    return resp
+  } catch (error) {
+    console.error(error)
+    return error
+  }
 })
 
 export const weatherSlice = createSlice({
@@ -72,6 +74,7 @@ export const weatherSlice = createSlice({
       state.loading = true
     }),
       builder.addCase(fetchWeather.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.weather = action.payload
         state.loading = false
       }),
