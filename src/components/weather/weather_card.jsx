@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import night from '../../assets/night.png'
 
 import '../../styles/weather.css'
@@ -35,11 +35,11 @@ function WeatherCard() {
   )
 }
 
-WeatherCard.propTypes = {
-  name: PropTypes.string,
-  country: PropTypes.string,
-  wea: PropTypes.string,
-  temp: PropTypes.number,
-}
+// WeatherCard.propTypes = {
+//   name: PropTypes.string,
+//   country: PropTypes.string,
+//   wea: PropTypes.string,
+//   temp: PropTypes.number,
+// }
 
 export default WeatherCard
