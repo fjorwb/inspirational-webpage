@@ -1,0 +1,64 @@
+import { useState, useEffect } from 'react'
+
+import '../../styles/weather.css'
+
+import WeatherCard from '../weather/weather_card.jsx'
+
+// const API_URL = `https://api.unsplash.com/search/photos?client_id=${ACCESS_KEY}`
+
+// const getImages = async (query) => {
+//   const response = await fetch(`${API_URL}&query=${query}`)
+//   const json = await response.json()
+
+//   return json
+// }
+
+function Weather() {
+  const [weatherData, setWeatherData] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  console.log(weatherData)
+
+  // useEffect(() => {
+  //   fetch(
+  //     'https://api.openweathermap.org/data/2.5/weather?lat=-12.09645155&lon=-76.99568986771155&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
+  //   )
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data)
+  //       setWeatherData(data)
+  //       setLoading(true)
+  //     })
+  //     .catch((error) => console.error('error', error))
+  // }, [])
+
+  // const { name, sys, weather, main.temp } = weatherData
+
+  // console.log(name, sys, weather, main)
+
+  const name = weatherData ? weatherData.name : ''
+  const country = weatherData ? weatherData.sys.country : ''
+  const wea = weatherData ? weatherData.weather[0].description : ''
+  const temp = weatherData ? weatherData.main.temp : 0
+
+  // console.log(name, country, wea, temp)
+
+  const bck_image = getImages('night')
+
+  return (
+    <div>
+      {loading ? (
+        <WeatherCard
+          name={name}
+          country={country}
+          wea={wea}
+          temp={temp}
+        />
+      ) : (
+        <h3>loading.....</h3>
+      )}
+    </div>
+  )
+}
+
+export default Weather
