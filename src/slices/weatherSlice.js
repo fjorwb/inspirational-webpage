@@ -1,70 +1,32 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-
-import { getWeather } from '../services/getWeather'
-
-// const url =
-//   'https://api.openweathermap.org/data/2.5/weather?lat=-12.09645155&lon=-76.99568986771155&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
-
-const wwww = {
-  coord: {
-    lon: -77.0008,
-    lat: -12.1022,
-  },
-  weather: [
-    {
-      id: 802,
-      main: 'Clouds',
-      description: 'scattered X clouds',
-      icon: '03d',
-    },
-  ],
-  base: 'stations',
-  main: {
-    temp: 25.2,
-    feels_like: 25.68,
-    temp_min: 25.2,
-    temp_max: 25.2,
-    pressure: 1013,
-    humidity: 73,
-  },
-  visibility: 10_000,
-  wind: {
-    speed: 4.63,
-    deg: 170,
-  },
-  clouds: {
-    all: 40,
-  },
-  dt: 1_708_614_920,
-  sys: {
-    type: 1,
-    id: 8_682,
-    country: 'PE',
-    sunrise: 1_708_600_159,
-    sunset: 1_708_644_848,
-  },
-  timezone: -18_000,
-  id: 3_929_792,
-  name: 'San Borja',
-  cod: 200,
-}
+import axios from 'axios'
 
 const initialState = {
-  weather: wwww,
+  weather: [],
+  location: { lat: -12.0979, lon: -77.0021 },
   loading: false,
   error: null,
 }
 
-export const fetchWeather = createAsyncThunk('weather/getWeather', async () => {
-  try {
-    const resp = await getWeather().then((response) => response)
-    console.log('RESP', resp)
-    return resp
-  } catch (error) {
-    console.error(error)
-    return error
-  }
+export const fetchWeather = createAsyncThunk('weather/fetchWeather', (url) => {
+  return axios
+    .get(
+      url
+      // 'https://api.openweathermap.org/data/2.5/weather?lat={str(lat)}&lon={str(lon)}&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
+    )
+    .then((response) => response.data)
 })
+
+export const fetchLocation = createAsyncThunk('weather/fetchLocation', (geo) => {
+  return axios
+    .get(
+      geo
+      // 'http://api.openweathermap.org/geo/1.0/direct?q={city},{state},{country}&limit={limit}&appid=7c4780e83d9cbb9bbc9d0f863c745130'
+    )
+    .then((response) => response.data)
+})
+
+// export const fetchImage = createAsyncThunk('weather/fetchImage', (url) => {})
 
 export const weatherSlice = createSlice({
   name: 'weather',
@@ -72,13 +34,27 @@ export const weatherSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchWeather.pending, (state) => {
       state.loading = true
+      state.error = null
     }),
       builder.addCase(fetchWeather.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.weather = action.payload
         state.loading = false
+        state.error = null
       }),
       builder.addCase(fetchWeather.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
+      }),
+      builder.addCase(fetchLocation.pending, (state) => {
+        state.loading = true
+        state.error = null
+      }),
+      builder.addCase(fetchLocation.fulfilled, (state, action) => {
+        state.location = { lat: action.payload[0].lat, lon: action.payload[0].lon }
+        state.loading = false
+        state.error = null
+      }),
+      builder.addCase(fetchLocation.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message
       })
