@@ -13,15 +13,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg: url('https://i.postimg.cc/mky88bRw/clear-sky.png');
 }
 
 
 body {
-  margin: 0;
+  margin: auto;
   display: flex;
-  /* place-items: center; */
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 40vh;
+  max-width: 720px;
+  aspect-ratio: 9/16;
+  place-content: center;
 }
 
 h1 {
@@ -48,3 +52,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.back {
+  background-image: var(--bg);
+  background-size: cover;
+  padding-top: 0.5rem;
+}

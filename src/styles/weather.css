@@ -1,5 +1,10 @@
+.container {
+  background: rgba(0, 0, 0, 0.15);
+  margin: .5rem 1.5rem;
+}
+
 .text {
-  font-size: 1.2rem;
+  font-size: .85rem;
   line-height: 1.6;
   color: #fff;
   text-align: center;
@@ -8,7 +13,7 @@
 .temp {
   margin: 0;
   padding: 0;
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
@@ -24,10 +29,10 @@ form {
 }
 
 input {
-  width: 100px;
+  width: 80px;
   margin-top: 1rem;
   padding: 0.5rem ;
-  font-size: .85rem;
+  font-size: .5rem;
   color: #000;
   background-color: #fff;
   border: none;
@@ -39,13 +44,13 @@ input {
 
 input::placeholder {
   color: #c8c6c6;
-  font-size: .75rem;
+  font-size: .5rem;
 }
 
 .btn {
   margin-top: 1rem;
   padding: 0.5rem .5rem;
-  font-size: .75rem;
+  font-size: .5rem;
   font-weight: 700;
   color: #fff;
   background-color: #000;

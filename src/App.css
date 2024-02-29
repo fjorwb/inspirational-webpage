@@ -10,9 +10,6 @@ body {
   font-size: 1.6rem;
   line-height: 1.6;
   color: #fff;
-  background-image: url(https://images.unsplash.com/photo-1592198084033-aade902d1aae?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb);
-  /* background-image: url('https://i.postimg.cc/mky88bRw/clear-sky.png'); */
-  background-size: cover;
   margin: 0;
   padding: 0;
 }
