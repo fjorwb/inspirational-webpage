@@ -1,7 +1,9 @@
+const OW_ACCESS_KEY = import.meta.env.VITE_OPENWEATHERACCESSKEY
+
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchWeather, fetchLocation } from '../../slices/weatherSlice'
+import { fetchWeather, fetchLocation, fetchImage } from '../../slices/weatherSlice'
 
 import night from '../../assets/night.png'
 
@@ -11,18 +13,27 @@ function WeatherCard() {
   const weatherData = useSelector((state) => state.weather.weather)
   const locationData = useSelector((state) => state.weather.location)
 
+  const { lat, lon } = locationData
+
+  const dispatch = useDispatch()
+
   const loading = useSelector((state) => state.weather.loading)
   // const error = useSelector((state) => state.weather.error)
 
   const [inputData, setInputData] = useState({})
 
-  let lat = locationData ? locationData.lat : -12.0979
-  let lon = locationData ? locationData.lon : -77.0021
+  useEffect(() => {
+    if (lat === undefined || lon === undefined) return
+    if (lat === 0 || lon === 0) return
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OW_ACCESS_KEY}&units=metric`
+    dispatch(fetchWeather(url))
+  }, [dispatch, lat, lon])
 
-  const OW_ACCESS_KEY = import.meta.env.VITE_OPENWEATHERACCESSKEY
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OW_ACCESS_KEY}&units=metric`
-
-  const dispatch = useDispatch()
+  const name = weatherData.name
+  const country = weatherData.sys?.country
+  const wea = weatherData.weather?.[0].description
+  const feels = weatherData.main?.feels_like
+  const temp = weatherData.main?.temp
 
   const handleInput = (e) => {
     e.preventDefault()
@@ -31,33 +42,31 @@ function WeatherCard() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const city = inputData.city
-    const state = inputData.state
-    const country = inputData.country
+    const city = inputData.city || ''
+    const state = inputData.state || ''
+    const country = inputData.country || ''
     const geo = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&limit=1&appid=${OW_ACCESS_KEY}`
     dispatch(fetchLocation(geo))
   }
 
-  useEffect(() => {
-    dispatch(fetchWeather(url))
-  }, [dispatch, url])
+  // useEffect(() => {
+  //   dispatch(fetchWeather(url))
+  // }, [dispatch, url])
 
-  const name = weatherData.name
-  const country = weatherData.sys?.country
-  const wea = weatherData.weather?.[0].description
-  const feels = weatherData.main?.feels_like
-  const temp = weatherData.main?.temp
+  useEffect(() => {
+    wea && dispatch(fetchImage(wea))
+  }, [dispatch, wea, weatherData])
 
   const render = loading ? (
-    <h1>Loading...</h1>
+    <h5>Loading...</h5>
   ) : (
-    <div>
+    <div className='container'>
       <img
         src={night}
         alt='night'
       />
       <div>
-        <p style={{ fontSize: '.95rem' }}>temperature / feels like</p>
+        <p style={{ fontSize: '.65rem' }}>temperature / feels like</p>
         <p className='temp'>
           {Math.floor(temp)}°C / {Math.floor(feels)}°C
         </p>

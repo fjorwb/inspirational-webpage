@@ -1,20 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+import { getBackGroundImage } from '../services/getBackGroundImage'
+
 const initialState = {
   weather: [],
   location: { lat: -12.0979, lon: -77.0021 },
+  image: null,
   loading: false,
   error: null,
 }
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', (url) => {
-  return axios
-    .get(
-      url
-      // 'https://api.openweathermap.org/data/2.5/weather?lat={str(lat)}&lon={str(lon)}&appid=7c4780e83d9cbb9bbc9d0f863c745130&units=metric'
-    )
-    .then((response) => response.data)
+  // console.log(url)
+  return axios.get(url).then((response) => response.data)
 })
 
 export const fetchLocation = createAsyncThunk('weather/fetchLocation', (geo) => {
@@ -26,11 +25,18 @@ export const fetchLocation = createAsyncThunk('weather/fetchLocation', (geo) => 
     .then((response) => response.data)
 })
 
-// export const fetchImage = createAsyncThunk('weather/fetchImage', (url) => {})
+export const fetchImage = createAsyncThunk('weather/fetchImage', async (query = query || 'sol') => {
+  return await getBackGroundImage(query)
+})
 
 export const weatherSlice = createSlice({
   name: 'weather',
   initialState,
+  reducers: {
+    setLocation: (state, action) => {
+      state.location = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchWeather.pending, (state) => {
       state.loading = true
@@ -57,8 +63,23 @@ export const weatherSlice = createSlice({
       builder.addCase(fetchLocation.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message
+      }),
+      builder.addCase(fetchImage.pending, (state) => {
+        state.loading = true
+        state.error = null
+      }),
+      builder.addCase(fetchImage.fulfilled, (state, action) => {
+        state.loading = false
+        state.image = action.payload
+        state.error = null
+      }),
+      builder.addCase(fetchImage.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.error.message
       })
   },
 })
+
+export const { setLocation } = weatherSlice.actions
 
 export default weatherSlice.reducer
