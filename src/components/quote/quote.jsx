@@ -1,7 +1,19 @@
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { fetchQuote } from '../../slices/quoteSlice'
+
 import '../../styles/quote.css'
 
 function Quote() {
-  const quote = `That's the risk you take if you change: that people you've been involved with won't like the new you. But other people who do will come along. —Lisa Alther`
+  const quote = useSelector((state) => state.quote.quote)
+  console.log(quote)
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchQuote())
+  }, [dispatch])
 
   return (
     <div className='quotecontainer'>
