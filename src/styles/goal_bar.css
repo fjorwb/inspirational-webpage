@@ -1,17 +1,44 @@
+.goals_bar_container {
+  margin: 0;
+  position: relative;
+}
+
 ul {
   list-style-type: none;
   margin: 0 1rem;
   padding: 0;
   overflow: hidden;
   border: 1px solid #e7e7e7;
-  padding: 1rem 1rem;
+  padding: .75rem .75rem;
   border-radius: 4px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  gap: 2rem;
+  gap: 1rem;
   font-size: 1rem;
   background: rgba(0,0,0,0.1);
+}
 
 
+.goals_bar_btn_container {
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin: 0;
+  padding: 0;
+}
+
+.goals_bar_btn {
+  margin: .125rem;
+  padding: .05rem .25rem;
+  font-size: 0.55rem;
+  background: yellow;
+  /* border: 1px solid #f1e7e7; */
+  box-shadow: 0 0 5px 0 #302f2f;
+  border-radius: 3px;
+  color: #000;
+  cursor: pointer;
 }
