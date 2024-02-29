@@ -1,7 +1,48 @@
+.goal_container {
+  width: 100px;
+  margin: 0;
+  padding: 0;
+  background: rgb(180, 239, 249);
+  border-radius: 5px;
+  position: relative;
+}
+
 .goal_title {
   font-size: 1rem;
   font-weight: bold;
-  padding: .5rem 1rem;
-  background-color: yellowgreen;
+  line-height: 1rem;
+  /* padding: .5rem 1rem; */
+  /* border-radius: 3px; */
+}
+
+.goal_btn_container {
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin: 0;
+  padding: 0;
+
+}
+
+.goal_btn {
+  margin: .125rem;
+  padding: .05rem .25rem;
+  font-size: 0.5rem;
+  background: #fff;
+  /* border: 1px solid #f1e7e7; */
+  box-shadow: 0 0 5px 0 #302f2f;
   border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit_btn {
+  background: rgb(53, 53, 114);
+}
+
+.delete_btn {
+  background: red;
 }

@@ -11,4 +11,7 @@ ul {
   justify-content: space-evenly;
   gap: 2rem;
   font-size: 1rem;
+  background: rgba(0,0,0,0.1);
+
+
 }
