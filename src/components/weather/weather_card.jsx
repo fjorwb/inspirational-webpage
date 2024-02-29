@@ -103,7 +103,7 @@ function WeatherCard() {
           </button>
         </form>
       </div>
-      <hr />
+      {/* <hr /> */}
     </div>
   )
 
