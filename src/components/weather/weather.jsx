@@ -16,7 +16,6 @@ function Weather() {
   const image = useSelector((state) => state.weather.image)
 
   const location = useGeolocation()
-  console.log('LOCATION', location)
 
   const dispatch = useDispatch()
 
