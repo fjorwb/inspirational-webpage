@@ -2,19 +2,22 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { v4 as uuidv4 } from 'uuid'
+
 import { addGoal } from '../../slices/goalSlice'
 
 import '../../styles/goal_bar.css'
 
 export const AddGoal = ({ closeModal }) => {
   const [text, setText] = useState('')
-  console.log(text)
+
+  let uuid = uuidv4()
 
   const dispatch = useDispatch()
 
   const handleAddGoal = (e) => {
     e.preventDefault()
-    dispatch(addGoal({ title: text }))
+    dispatch(addGoal({ id: uuid, title: text }))
     closeModal()
   }
 

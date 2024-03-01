@@ -6,15 +6,13 @@ import { editGoal } from '../../slices/goalSlice'
 
 import '../../styles/goal_bar.css'
 
-export const EditGoal = ({ closeModal }) => {
+export const EditGoal = ({ closeModal, goal }) => {
   const [text, setText] = useState('')
-  console.log(text)
 
   const dispatch = useDispatch()
 
   const handleEditGoal = () => {
-    console.log(text)
-    dispatch(editGoal({ title: text }))
+    dispatch(editGoal({ id: goal.id, title: text }))
     closeModal()
   }
 

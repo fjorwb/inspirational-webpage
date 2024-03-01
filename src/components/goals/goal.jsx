@@ -1,26 +1,26 @@
 /* eslint-disable react/prop-types */
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { Modal } from '../modal/modal'
 import { useModal } from '../../hooks/useModal'
+
+import { deleteGoal } from '../../slices/goalSlice'
 
 import { EditGoal } from '../goals/edit_goal'
 
 import '../../styles/goal.css'
 
-export function Goal({ goal }) {
-  const goals = useSelector((state) => state.goals.goals)
-  console.log(goals)
+export function Goal({ goal, key }) {
+  const dispatch = useDispatch()
 
   const [isOpen, openModal, closeModal] = useModal(false)
 
   const handleEditQuote = () => {
-    // console.log('edit goal!!')
     openModal()
   }
 
   const handleDeleteQuote = () => {
-    console.log('delete goal')
+    dispatch(deleteGoal({ id: goal.id }))
   }
 
   return (
@@ -40,7 +40,7 @@ export function Goal({ goal }) {
             delete
           </button>
         </div>
-        <p className='goal_title'>{goal}</p>
+        <p className='goal_title'>{goal.title}</p>
       </div>
       <div>
         {isOpen ? (
@@ -48,7 +48,10 @@ export function Goal({ goal }) {
             isOpen={isOpen}
             closeModal={closeModal}
           >
-            <EditGoal closeModal={closeModal} />
+            <EditGoal
+              closeModal={closeModal}
+              goal={goal}
+            />
           </Modal>
         ) : null}
       </div>

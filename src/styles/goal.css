@@ -12,8 +12,7 @@
   font-weight: bold;
   line-height: 1rem;
   color: #302f2f;
-  /* padding: .5rem 1rem; */
-  /* border-radius: 3px; */
+  padding: .5rem 1rem;
 }
 
 .goal_btn_container {
@@ -32,7 +31,6 @@
   padding: .05rem .25rem;
   font-size: 0.5rem;
   background: #fff;
-  /* border: 1px solid #f1e7e7; */
   box-shadow: 0 0 5px 0 #302f2f;
   border-radius: 3px;
   color: #fff;

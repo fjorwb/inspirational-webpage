@@ -8,8 +8,6 @@ import { AddGoal } from '../goals/add_goal'
 
 import '../../styles/goal_bar.css'
 
-// const goals = { goals: [{ title: 'Goal 1' }, { title: 'Goal 2' }, { title: 'Goal 3' }] }
-
 function GoalsBar() {
   const goals = useSelector((state) => state.goals.goals)
 
@@ -23,11 +21,13 @@ function GoalsBar() {
     <div>
       <div className='goals_bar_container'>
         <ul>
-          {goals.map((goal, index) => (
-            <Goal
-              key={index}
-              goal={goal.title}
-            />
+          {goals.map((goal) => (
+            <li key={goal.id}>
+              <Goal
+                // key={goal.id}
+                goal={goal}
+              />
+            </li>
           ))}
         </ul>
         <div className='goals_bar_btn_container'>
