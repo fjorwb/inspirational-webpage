@@ -16,6 +16,7 @@ function Weather() {
   const image = useSelector((state) => state.weather.image)
 
   const location = useGeolocation()
+  console.log(location)
 
   const dispatch = useDispatch()
 
@@ -29,9 +30,12 @@ function Weather() {
 
   const wea = Object.entries(weather).length === 0 ? 'XXXX' : weather.weather[0].description
 
+  let query = `${wea} ${weather.name}`
+  console.log(query)
+
   useEffect(() => {
-    dispatch(fetchImage(wea))
-  }, [dispatch, wea])
+    dispatch(fetchImage(query))
+  }, [dispatch, query])
 
   const image_url = `url(${image})`
 

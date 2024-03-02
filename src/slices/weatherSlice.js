@@ -12,7 +12,7 @@ const initialState = {
 }
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', (url) => {
-  // console.log(url)
+  console.log(url)
   return axios.get(url).then((response) => response.data)
 })
 
@@ -56,7 +56,7 @@ export const weatherSlice = createSlice({
         state.error = null
       }),
       builder.addCase(fetchLocation.fulfilled, (state, action) => {
-        state.location = { lat: action.payload[0].lat, lon: action.payload[0].lon }
+        state.location = { lat: action.payload[0]?.lat, lon: action.payload[0].lon }
         state.loading = false
         state.error = null
       }),

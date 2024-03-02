@@ -22,6 +22,7 @@ function rnd() {
 }
 
 export const getBackGroundImage = async (query) => {
+  console.log(query)
   let n = rnd()
 
   const response = await fetch(`${API_URL}&query=${query}`)
