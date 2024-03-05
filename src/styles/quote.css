@@ -1,6 +1,7 @@
 .quotecontainer {
   margin: 1rem;
   background: rgba(0, 0, 0, .1);
+  border-radius: 5px;
 }
 .title {
   font-size: 2rem;

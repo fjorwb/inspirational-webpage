@@ -35,11 +35,12 @@ function GoalsBar() {
             className='goals_bar_btn'
             onClick={handleAddGoal}
           >
-            add
+            add goal
           </button>
         </div>
       </div>
-      <div>
+      {/* <div> */}
+      <div className='goals_bar_add_container'>
         {isOpen ? (
           <Modal
             isOpen={isOpen}

@@ -2,9 +2,9 @@ import '../../styles/goals.css'
 
 import GoalsBar from './goals_bar'
 
-function Goals() {
+export function Goals() {
   return (
-    <div>
+    <div className='goals-container'>
       <GoalsBar />
     </div>
   )
