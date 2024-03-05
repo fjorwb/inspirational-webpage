@@ -17,12 +17,10 @@ const API_URL = `https://api.unsplash.com/search/photos?client_id=${key}`
 // }
 
 function rnd() {
-  console.log()
   return Math.floor(Math.random() * 9)
 }
 
 export const getBackGroundImage = async (query) => {
-  console.log(query)
   let n = rnd()
 
   const response = await fetch(`${API_URL}&query=${query}`)

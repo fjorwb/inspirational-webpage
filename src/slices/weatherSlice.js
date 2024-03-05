@@ -11,18 +11,13 @@ const initialState = {
   error: null,
 }
 
-export const fetchWeather = createAsyncThunk('weather/fetchWeather', (url) => {
+export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (url) => {
   console.log(url)
-  return axios.get(url).then((response) => response.data)
+  return await axios.get(url).then((response) => response.data)
 })
 
 export const fetchLocation = createAsyncThunk('weather/fetchLocation', (geo) => {
-  return axios
-    .get(
-      geo
-      // 'http://api.openweathermap.org/geo/1.0/direct?q={city},{state},{country}&limit={limit}&appid=7c4780e83d9cbb9bbc9d0f863c745130'
-    )
-    .then((response) => response.data)
+  return axios.get(geo).then((response) => response.data)
 })
 
 export const fetchImage = createAsyncThunk('weather/fetchImage', async (query = query || 'sol') => {
@@ -35,6 +30,11 @@ export const weatherSlice = createSlice({
   reducers: {
     setLocation: (state, action) => {
       state.location = action.payload
+    },
+    setLocationNotFount: (state, action) => {
+      console.log('ERROR SLICE', action.payload)
+      state.loading = false
+      state.error = action.payload
     },
   },
   extraReducers: (builder) => {
@@ -56,9 +56,12 @@ export const weatherSlice = createSlice({
         state.error = null
       }),
       builder.addCase(fetchLocation.fulfilled, (state, action) => {
-        state.location = { lat: action.payload[0]?.lat, lon: action.payload[0].lon }
-        state.loading = false
-        state.error = null
+        if (action.payload[0] !== undefined) {
+          state.location = { lat: action.payload[0]?.lat, lon: action.payload[0]?.lon }
+        } else {
+          state.loading = false
+          state.error = 'Location not found'
+        }
       }),
       builder.addCase(fetchLocation.rejected, (state, action) => {
         state.loading = false
@@ -80,6 +83,6 @@ export const weatherSlice = createSlice({
   },
 })
 
-export const { setLocation } = weatherSlice.actions
+export const { setLocation, setLocationNotFount } = weatherSlice.actions
 
 export default weatherSlice.reducer

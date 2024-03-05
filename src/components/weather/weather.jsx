@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchWeather, fetchImage, setLocation } from '../../slices/weatherSlice'
+import { setLocation } from '../../slices/weatherSlice'
 
 import { useGeolocation } from '../../hooks/useGeolocation.js'
 
@@ -12,11 +12,13 @@ import WeatherCard from '../weather/weather_card.jsx'
 function Weather() {
   const loading = 'false'
 
-  const weather = useSelector((state) => state.weather.weather)
+  // const weather = useSelector((state) => state.weather.weather)
   const image = useSelector((state) => state.weather.image)
+  // const loading = useSelector((state) => state.weather.loading)
+  // console.log(loading)
 
   const location = useGeolocation()
-  console.log(location)
+  // console.log(location)
 
   const dispatch = useDispatch()
 
@@ -24,18 +26,18 @@ function Weather() {
     dispatch(setLocation(location))
   }, [dispatch, location])
 
-  useEffect(() => {
-    dispatch(fetchWeather())
-  }, [dispatch])
+  // useEffect(() => {
+  // dispatch(fetchWeather())
+  // }, [dispatch])
 
-  const wea = Object.entries(weather).length === 0 ? 'XXXX' : weather.weather[0].description
+  // const wea = Object.entries(weather).length === 0 ? 'XXXX' : weather.weather[0].description
 
-  let query = `${wea} ${weather.name}`
-  console.log(query)
+  // let query = `${wea} ${weather.name || ''}`
+  // console.log(query)
 
-  useEffect(() => {
-    dispatch(fetchImage(query))
-  }, [dispatch, query])
+  // useEffect(() => {
+  //   dispatch(fetchImage(query))
+  // }, [dispatch, query])
 
   const image_url = `url(${image})`
 
