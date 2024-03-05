@@ -3,14 +3,11 @@
   margin: 0 auto;
   padding: 0 10rem;
   text-align: center;
-  margin-top: .5rem;
   box-sizing: border-box;
 }
 
 body {
-  /* font-family: 'Arial', sans-serif; */
   font-size: 1.6rem;
-  /* line-height: 1.6; */
   color: #fff;
   margin: 0;
   padding: 0;

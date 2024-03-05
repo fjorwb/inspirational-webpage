@@ -24,8 +24,9 @@ body {
   min-width: 320px;
   min-height: 40vh;
   max-width: 720px;
-  aspect-ratio: 9/16;
+  /* aspect-ratio: 9/16; */
   place-content: center;
+  transform: scale(.8);
 }
 
 h1 {
@@ -57,4 +58,5 @@ button:focus-visible {
   background-size: cover;
   padding-top: 0.5rem;
   padding-bottom: .5rem;
+  border-radius: 10px;
 }
