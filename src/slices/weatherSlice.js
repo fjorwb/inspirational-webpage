@@ -12,12 +12,11 @@ const initialState = {
 }
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (url) => {
-  console.log(url)
   return await axios.get(url).then((response) => response.data)
 })
 
-export const fetchLocation = createAsyncThunk('weather/fetchLocation', (geo) => {
-  return axios.get(geo).then((response) => response.data)
+export const fetchLocation = createAsyncThunk('weather/fetchLocation', async (geo) => {
+  return await axios.get(geo).then((response) => response.data)
 })
 
 export const fetchImage = createAsyncThunk('weather/fetchImage', async (query = query || 'sol') => {

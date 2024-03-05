@@ -12,17 +12,13 @@ import {
 
 import { getWeatherIcon } from '../../services/getWeatherIcon'
 
-// import night from '../../assets/night.png'
-
 import '../../styles/weather.css'
 
-function WeatherCard() {
+export function WeatherCard() {
   const weatherData = useSelector((state) => state.weather.weather)
   const locationData = useSelector((state) => state.weather.location)
   const loading = useSelector((state) => state.weather.loading)
   const error = useSelector((state) => state.weather.error)
-
-  console.log(weatherData)
 
   const { lat, lon } = locationData
 
@@ -56,7 +52,6 @@ function WeatherCard() {
     const state = inputData.state || ''
     const country = inputData.country || ''
     const query = `${city},${state},${country}`
-    console.log('QUERY', query)
     const geo = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${OW_ACCESS_KEY}`
     dispatch(fetchLocation(geo))
     setInputData({})
