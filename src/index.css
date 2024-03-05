@@ -56,4 +56,5 @@ button:focus-visible {
   background-image: var(--bg);
   background-size: cover;
   padding-top: 0.5rem;
+  padding-bottom: .5rem;
 }
