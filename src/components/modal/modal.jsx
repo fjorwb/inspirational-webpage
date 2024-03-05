@@ -9,29 +9,27 @@ export const Modal = ({ children, isOpen, closeModal }) => {
 
   return (
     <div className='modal'>
-      <div>
-        <article
-          className='modal txt'
-          onClick={closeModal}
+      <article
+        className='modal txt'
+        onClick={closeModal}
+      >
+        <div
+          className='modal-container'
+          onClick={handleModalClick}
         >
           <div
-            className='modal-container'
-            onClick={handleModalClick}
+            className='modal-close'
+            onClick={closeModal}
           >
-            <div
-              className='modal-close'
-              onClick={closeModal}
-            >
-              <img
-                // className='modal-close-img'
-                src={close}
-                alt=''
-              />
-            </div>
-            {children}
+            <img
+              // className='modal-close-img'
+              src={close}
+              alt='close'
+            />
           </div>
-        </article>
-      </div>
+          {children}
+        </div>
+      </article>
     </div>
   )
 }
