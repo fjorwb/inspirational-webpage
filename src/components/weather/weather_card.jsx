@@ -55,7 +55,7 @@ export function WeatherCard() {
     const state = inputData.state || ''
     const country = inputData.country || ''
     const query = `${city},${state},${country}`
-    const geo = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${OW_ACCESS_KEY}`
+    const geo = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${OW_ACCESS_KEY}`
     dispatch(fetchLocation(geo))
     setInputData({})
   }
