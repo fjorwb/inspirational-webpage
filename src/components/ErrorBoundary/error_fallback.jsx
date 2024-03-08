@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+/* eslint-disable react/prop-types */
 
 export function ErrorFallback({ error }) {
   return (
@@ -7,10 +7,6 @@ export function ErrorFallback({ error }) {
       <pre style={{ color: 'red' }}>{error.message}</pre>
     </div>
   )
-}
-
-ErrorFallback.propTypes = {
-  error: PropTypes.object,
 }
 
 export default ErrorFallback
