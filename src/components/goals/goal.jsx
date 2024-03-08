@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { Modal } from '../modal/modal'
 import { useModal } from '../../hooks/useModal'
@@ -10,7 +10,7 @@ import { EditGoal } from '../goals/edit_goal'
 
 import '../../styles/goal.css'
 
-export function Goal({ goal, key }) {
+export function Goal({ goal }) {
   const dispatch = useDispatch()
 
   const [isOpen, openModal, closeModal] = useModal(false)

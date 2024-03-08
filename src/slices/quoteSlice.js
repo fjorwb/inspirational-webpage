@@ -22,9 +22,9 @@ export const quoteSlice = createSlice({
   name: 'quote',
   initialState,
   reducers: {
-    getQuote: (state, action) => {
-      state.quote = action.payload
-    },
+    // getQuote: (state, action) => {
+    //   state.quote = action.payload
+    // },
     loading: (state) => {
       state.loading = true
     },
