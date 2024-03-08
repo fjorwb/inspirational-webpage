@@ -46,7 +46,8 @@ function Weather() {
 
   // console.log(weatherData)
 
-  return <div>{loading ? <WeatherCard /> : <h3>loading.....</h3>}</div>
+  // return <div>{loading ? <WeatherCard /> : <h3>loading.....</h3>}</div>
+  return <WeatherCard />
 }
 
 export default Weather

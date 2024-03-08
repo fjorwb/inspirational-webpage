@@ -39,7 +39,10 @@ export function WeatherCard() {
   const wea = weatherData.weather?.[0].description
   const feels = weatherData.main?.feels_like
   const temp = weatherData.main?.temp
-  const weatherIcon = getWeatherIcon({ icon: weatherData.weather?.[0].icon })
+  const weatherIcon =
+    getWeatherIcon({ icon: weatherData.weather?.[0].icon }) === 1
+      ? ''
+      : getWeatherIcon({ icon: weatherData.weather?.[0].icon })
 
   const handleInput = (e) => {
     e.preventDefault()

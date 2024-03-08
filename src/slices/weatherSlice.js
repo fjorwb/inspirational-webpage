@@ -12,7 +12,15 @@ const initialState = {
 }
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (url) => {
-  return await axios.get(url).then((response) => response.data)
+  // return await axios.get(url).then((response) => response.data)
+
+  try {
+    const response = await axios.get(url)
+    return response.data
+  } catch {
+    console.log('ERROR')
+    throw new Error('Error')
+  }
 })
 
 export const fetchLocation = createAsyncThunk('weather/fetchLocation', async (geo) => {
@@ -49,6 +57,7 @@ export const weatherSlice = createSlice({
       builder.addCase(fetchWeather.rejected, (state, action) => {
         state.loading = false
         state.error = action.error.message
+        state.weather = []
       }),
       builder.addCase(fetchLocation.pending, (state) => {
         state.loading = true
