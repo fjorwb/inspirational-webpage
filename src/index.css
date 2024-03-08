@@ -26,7 +26,7 @@ body {
   max-width: 720px;
   /* aspect-ratio: 9/16; */
   place-content: center;
-  transform: scale(.8);
+  /* transform: scale(.8); */
 }
 
 h1 {
