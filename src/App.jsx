@@ -1,5 +1,3 @@
-import {} from 'fs'
-
 import './App.css'
 
 import Weather from './components/weather/weather.jsx'
