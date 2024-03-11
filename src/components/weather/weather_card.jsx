@@ -80,52 +80,60 @@ export function WeatherCard() {
   const render = loading ? (
     <h5>Loading...</h5>
   ) : (
-    <div className='container'>
-      <img
-        src={weatherIcon}
-        alt={wea}
-        style={{
-          width: '125px',
-          height: '125px',
-          margin: '0 auto',
-          padding: '0',
-        }}
-      />
-      <div>
+    <div className='weather-container'>
+      <div className='weather_img'>
+        <img
+          src={weatherIcon}
+          alt={wea}
+          style={{
+            width: '125px',
+            height: '125px',
+            margin: '0 auto',
+            padding: '0',
+          }}
+        />
+      </div>
+      <div className='weather_data'>
         <p style={{ fontSize: '.65rem' }}>temperature / feels like</p>
-        <p className='temp'>
+        <p className='weather_data_temp'>
           {Math.floor(temp)}°C / {Math.floor(feels)}°C
         </p>
-        <p className='text'>
+        <p className='weather_data_text'>
           {name}, {country}
         </p>
-        <p className='text'>{wea}</p>
+        <p className='weather_data_text'>{wea}</p>
       </div>
-      <div>
+      <div className='weather_search'>
         {error ? (
           <p style={{ color: 'darkorange' }}>location not found</p>
         ) : (
-          <form onSubmit={handleSubmit}>
+          <form
+            className='weather_data_form'
+            onSubmit={handleSubmit}
+          >
             <input
               type='text'
+              className='weather_data_input'
               name='city'
               placeholder='Enter City'
               onChange={(e) => handleInput(e)}
             />
             <input
               type='text'
+              className='weather_data_input'
               name='state'
               placeholder='Enter State'
               onChange={(e) => handleInput(e)}
             />
             <input
               type='text'
+              className='weather_data_input'
               name='country'
               placeholder='Enter Country'
               onChange={(e) => handleInput(e)}
             />
             <button
-              className='btn'
+              className='weather_data_btn'
               type='submit'
             >
               enter

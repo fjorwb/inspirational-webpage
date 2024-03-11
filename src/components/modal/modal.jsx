@@ -2,15 +2,16 @@
 import close from '../../assets/close.png'
 import '../../styles/modal.css'
 
-export const Modal = ({ children, isOpen, closeModal }) => {
-  const txt = isOpen ? '.is-open' : ''
+export const Modal = ({ children, closeModal }) => {
+  // const txt = isOpen ? '.is-open' : ''
 
   const handleModalClick = (e) => e.stopPropagation()
 
   return (
     <div className='modal'>
       <article
-        className='modal txt'
+        // className='modal txt'
+        className='modal'
         onClick={closeModal}
       >
         <div

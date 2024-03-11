@@ -5,7 +5,7 @@
   position: relative;
 }
 
-ul {
+.goals_list {
   list-style-type: none;
   /* margin: 0 1rem; */
   padding: 0;
@@ -24,7 +24,7 @@ ul {
 
 
 .goals_bar_btn_container {
-  width: 50%;
+  /* width: 50%; */
   position: absolute;
   bottom: 15px;
   right: 20px;
@@ -38,6 +38,7 @@ ul {
 .goal_bar_title {
   font-size: 1rem;
   color: #545252;
+  margin-top: 2rem;
 }
 
 .goals_bar_btn {
@@ -53,7 +54,21 @@ ul {
 }
 
 .goals_bar_add_container {
-  width: 400px;
+  /* width: 400px; */
+  position: absolute;
+  top: -20;
+  /* bottom: -10px; */
+  /* right: 0px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.goals_bar_edit_container {
+  /* width: 400px; */
   position: absolute;
   top: -20;
   /* bottom: -10px; */

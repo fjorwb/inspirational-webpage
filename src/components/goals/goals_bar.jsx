@@ -20,7 +20,7 @@ function GoalsBar() {
   return (
     <div>
       <div className='goals_bar_container'>
-        <ul>
+        <ul className='goals_list'>
           {goals.map((goal) => (
             <li key={goal.id}>
               <Goal
@@ -39,18 +39,16 @@ function GoalsBar() {
           </button>
         </div>
       </div>
-      {/* <div> */}
-      <div className='goals_bar_add_container'>
-        {isOpen ? (
-          <Modal
-            isOpen={isOpen}
-            closeModal={closeModal}
-          >
-            <AddGoal closeModal={closeModal} />
-          </Modal>
-        ) : null}
-      </div>
+      {isOpen ? (
+        <Modal
+          isOpen={isOpen}
+          closeModal={closeModal}
+        >
+          <AddGoal closeModal={closeModal} />
+        </Modal>
+      ) : null}
     </div>
+    // </div>
   )
 }
 

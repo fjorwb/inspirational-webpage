@@ -17,7 +17,7 @@ export const EditGoal = ({ closeModal, goal }) => {
   }
 
   return (
-    <div className='goals_bar_add_container'>
+    <div className='goals_bar_edit_container'>
       <h1 className='goal_bar_title'>Edit Goal</h1>
       <input
         className='goal_bar_add_input'
