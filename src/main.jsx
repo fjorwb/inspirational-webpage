@@ -15,7 +15,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Provider store={store}>
-        {/* <div id='preloader'></div> */}
         <App />
       </Provider>
     </ErrorBoundary>
