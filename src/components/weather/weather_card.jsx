@@ -3,6 +3,8 @@ const OW_ACCESS_KEY = import.meta.env.VITE_OPENWEATHERACCESSKEY
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { Loader } from '../loader/loader.jsx'
+
 import {
   fetchWeather,
   fetchLocation,
@@ -78,7 +80,8 @@ export function WeatherCard() {
   }, [error])
 
   const render = loading ? (
-    <h5>Loading...</h5>
+    // <h5>Loading...</h5>
+    <Loader />
   ) : (
     <div className='weather-container'>
       <div className='weather_img'>

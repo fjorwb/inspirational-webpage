@@ -1,0 +1,16 @@
+.loader_container {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

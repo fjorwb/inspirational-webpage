@@ -5,6 +5,8 @@ import { setLocation } from '../../slices/weatherSlice'
 
 import { useGeolocation } from '../../hooks/useGeolocation.js'
 
+import { Loader } from '../loader/loader.jsx'
+
 import '../../styles/weather.css'
 
 import WeatherCard from '../weather/weather_card.jsx'
@@ -46,7 +48,8 @@ function Weather() {
 
   // console.log(weatherData)
 
-  return <div>{loading ? <WeatherCard /> : <h3>loading.....</h3>}</div>
+  return <div>{loading ? <WeatherCard /> : <Loader />}</div>
+  // return <div>{loading ? <WeatherCard /> : <h3>loading.....</h3>}</div>
   // return <WeatherCard />
 }
 
