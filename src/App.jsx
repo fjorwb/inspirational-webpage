@@ -7,7 +7,6 @@ import Quote from './components/quote/quote.jsx'
 function App() {
   const render = (
     <div className='back'>
-      {/* <h5>Inspirational Webpage</h5> */}
       <Weather />
       <Goals />
       <Quote />

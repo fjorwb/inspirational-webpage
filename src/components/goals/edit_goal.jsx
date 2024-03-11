@@ -11,13 +11,14 @@ export const EditGoal = ({ closeModal, goal }) => {
 
   const dispatch = useDispatch()
 
-  const handleEditGoal = () => {
+  const handleEdit = (e) => {
+    e.preventDefault()
     dispatch(editGoal({ id: goal.id, title: text }))
     closeModal()
   }
 
   return (
-    <div className='goals_bar_edit_container'>
+    <div className='goals_bar_add_container'>
       <h1 className='goal_bar_title'>Edit Goal</h1>
       <input
         className='goal_bar_add_input'
@@ -27,7 +28,7 @@ export const EditGoal = ({ closeModal, goal }) => {
       />
       <button
         className='goals_bar_btn'
-        onClick={handleEditGoal}
+        onClick={handleEdit}
       >
         edit
       </button>

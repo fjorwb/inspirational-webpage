@@ -1,25 +1,25 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from 'react-redux'
 
-import { Modal } from '../modal/modal'
-import { useModal } from '../../hooks/useModal'
+// import { Modal } from '../modal/modal'
+// import { useModal } from '../../hooks/useModal'
 
 import { deleteGoal } from '../../slices/goalSlice'
 
-import { EditGoal } from '../goals/edit_goal'
+// import { EditGoal } from '../goals/edit_goal'
 
 import '../../styles/goal.css'
 
-export function Goal({ goal }) {
+export function Goal({ goal, handleEditGoal }) {
   const dispatch = useDispatch()
 
-  const [isOpen, openModal, closeModal] = useModal(false)
+  // const [isOpen, openModal, closeModal] = useModal(false)
 
-  const handleEditQuote = () => {
-    openModal()
+  const handleEdit = () => {
+    handleEditGoal()
   }
 
-  const handleDeleteQuote = () => {
+  const handleDeleteGoal = () => {
     dispatch(deleteGoal({ id: goal.id }))
   }
 
@@ -29,20 +29,20 @@ export function Goal({ goal }) {
         <div className='goal_btn_container'>
           <button
             className='goal_btn edit_btn'
-            onClick={handleEditQuote}
+            onClick={handleEdit}
           >
             edit
           </button>
           <button
             className='goal_btn delete_btn'
-            onClick={handleDeleteQuote}
+            onClick={handleDeleteGoal}
           >
             delete
           </button>
         </div>
         <p className='goal_title'>{goal.title}</p>
       </div>
-      <div>
+      {/* <div>
         {isOpen ? (
           <Modal
             isOpen={isOpen}
@@ -54,7 +54,7 @@ export function Goal({ goal }) {
             />
           </Modal>
         ) : null}
-      </div>
+      </div> */}
     </div>
   )
 }

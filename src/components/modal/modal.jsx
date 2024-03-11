@@ -8,29 +8,29 @@ export const Modal = ({ children, closeModal }) => {
   const handleModalClick = (e) => e.stopPropagation()
 
   return (
-    <div className='modal'>
-      <article
+    <div className='modal-container'>
+      {/* <article
         // className='modal txt'
-        className='modal'
+        // className='modal'
         onClick={closeModal}
+      > */}
+      <div
+        className='modal'
+        onClick={handleModalClick}
       >
         <div
-          className='modal-container'
-          onClick={handleModalClick}
+          className='modal-close'
+          onClick={closeModal}
         >
-          <div
-            className='modal-close'
-            onClick={closeModal}
-          >
-            <img
-              // className='modal-close-img'
-              src={close}
-              alt='close'
-            />
-          </div>
-          {children}
+          <img
+            // className='modal-close-img'
+            src={close}
+            alt='close'
+          />
         </div>
-      </article>
+        {children}
+      </div>
+      {/* </article> */}
     </div>
   )
 }

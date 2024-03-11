@@ -10,7 +10,18 @@
 </head>
 
 <body>
+  <div id='preloader'></div>
+
   <div id="root"></div>
+  <script>
+    const loader = document.getElementById('preloader');
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 4000);
+      // loader.style.display = 'none';
+    });
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

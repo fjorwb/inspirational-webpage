@@ -5,16 +5,22 @@ import { Modal } from '../modal/modal'
 import { useModal } from '../../hooks/useModal'
 
 import { AddGoal } from '../goals/add_goal'
+import { EditGoal } from '../goals/edit_goal'
 
 import '../../styles/goal_bar.css'
 
 function GoalsBar() {
   const goals = useSelector((state) => state.goals.goals)
 
-  const [isOpen, openModal, closeModal] = useModal(false)
+  const [isOpenAddGoal, openModalAddGoal, closeModalAddGoal] = useModal(false)
+  const [isOpenEditGoal, openModalEditGoal, closeModalEditGoal] = useModal(false)
 
   const handleAddGoal = () => {
-    openModal()
+    openModalAddGoal()
+  }
+
+  const handleEditGoal = () => {
+    openModalEditGoal()
   }
 
   return (
@@ -26,6 +32,7 @@ function GoalsBar() {
               <Goal
                 // key={goal.id}
                 goal={goal}
+                handleEditGoal={handleEditGoal}
               />
             </li>
           ))}
@@ -39,16 +46,26 @@ function GoalsBar() {
           </button>
         </div>
       </div>
-      {isOpen ? (
+      {isOpenAddGoal ? (
         <Modal
-          isOpen={isOpen}
-          closeModal={closeModal}
+          isOpen={isOpenAddGoal}
+          closeModal={closeModalAddGoal}
         >
-          <AddGoal closeModal={closeModal} />
+          <AddGoal closeModal={closeModalAddGoal} />
+        </Modal>
+      ) : null}
+      {isOpenEditGoal ? (
+        <Modal
+          isOpen={isOpenEditGoal}
+          closeModal={closeModalEditGoal}
+        >
+          <EditGoal
+            closeModal={closeModalEditGoal}
+            handleEditGoal={handleEditGoal}
+          />
         </Modal>
       ) : null}
     </div>
-    // </div>
   )
 }
 
