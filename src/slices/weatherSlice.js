@@ -18,7 +18,7 @@ export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (url)
     const response = await axios.get(url)
     return response.data
   } catch {
-    console.log('ERROR')
+    // console.log('ERROR')
     throw new Error('Error')
   }
 })
