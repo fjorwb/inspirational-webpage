@@ -18,7 +18,6 @@ export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (url)
     const response = await axios.get(url)
     return response.data
   } catch {
-    // console.log('ERROR')
     throw new Error('Error')
   }
 })
@@ -39,7 +38,6 @@ export const weatherSlice = createSlice({
       state.location = action.payload
     },
     setLocationNotFount: (state, action) => {
-      console.log('ERROR SLICE', action.payload)
       state.loading = false
       state.error = action.payload
     },

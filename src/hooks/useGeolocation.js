@@ -8,8 +8,6 @@ export const useGeolocation = () => {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation({ lat: position.coords.latitude, lon: position.coords.longitude })
       })
-    } else {
-      console.log('Geolocation is not supported by this browser.')
     }
   }, [])
 

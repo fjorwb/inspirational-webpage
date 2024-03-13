@@ -16,7 +16,5 @@ export const getWeather = () => {
     )
     .then((response) => response.data)
 
-  console.log(resp)
-
   return resp
 }

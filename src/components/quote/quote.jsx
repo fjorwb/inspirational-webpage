@@ -7,7 +7,6 @@ import '../../styles/quote.css'
 
 function Quote() {
   const quote = useSelector((state) => state.quote.quote)
-  // console.log(quote)
 
   const dispatch = useDispatch()
 

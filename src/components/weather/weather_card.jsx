@@ -68,7 +68,6 @@ export function WeatherCard() {
 
   useEffect(() => {
     const query = `${wea} ${name}` || ''
-    // console.log(query)
     wea && dispatch(fetchImage(query))
   }, [dispatch, wea, name, weatherData])
 
@@ -76,8 +75,7 @@ export function WeatherCard() {
     if (error === 'Location not found') {
       setTimeout(() => dispatch(setLocationNotFount(false)), 1500)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [error])
+  }, [error, dispatch])
 
   const render = loading ? (
     // <h5>Loading...</h5>
