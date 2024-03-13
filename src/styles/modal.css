@@ -5,7 +5,6 @@
 
 .modal {
   position: absolute;
-  /* top: -520px; */
   top: 0;
   left: 0;
   bottom: 0;
@@ -45,8 +44,6 @@
   font-weight: bold;
   line-height: 1rem;
   color: #302f2f;
-  /* padding: .5rem 1rem; */
-  /* border-radius: 3px; */
  }
 
  .modal_btn {
@@ -54,10 +51,7 @@
   padding: .05rem .25rem;
   font-size: 0.5rem;
   background: #d71414;
-  /* border: 1px solid #f1e7e7; */
-  /* box-shadow: 0 0 5px 0 #302f2f; */
   border-radius: 3px;
-  /* color: #ca2020; */
   cursor: pointer;
  }
 

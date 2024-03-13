@@ -139,7 +139,7 @@ export function WeatherCard() {
               className='weather_data_btn'
               type='submit'
             >
-              enter
+              Enter
             </button>
           </form>
         )}
